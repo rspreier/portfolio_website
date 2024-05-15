@@ -1,33 +1,139 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Work+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  font-family: "Work Sans", sans-serif;
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .header {
+    @apply flex justify-between items-center sm:px-12 py-4 mx-auto fixed top-0 bg-white z-10 right-0 left-0;
   }
 }
+
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  background-color: inherit;
+  width: 35%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -12px;
+  background-color: white;
+  border: 4px solid rgb(164,156,196);
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the right container (pointing left) */
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -13px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: rgb(164,156,196, 0.7);
+  position: relative;
+  border-radius: 6px;
+  height: 400px;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.custom-left-1 {
+  width: calc(100vw / 6);
+}
+
+
+code {
+    font-family: input-mono, monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+html {
+    scroll-snap-type: y mandatory;
+}
+  
+h2 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 500;
+    text-align: center;
+}
+  
+.project_text {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 200;
+    text-align: center;
+}
+  
+section {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    scroll-snap-align: center;
+    perspective: 500px;
+}
+  
+section > div {
+    width: 650px;
+    height: 400px;
+    right: 23%;
+    position: relative;
+    max-height: 90vh;
+    margin: 20px;
+    background: var(--white);
+    overflow: hidden;
+}
+  
+.project_pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+  
+.text-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 72%;
+    transform: translate(-50%, -50%);
+}
+
+
