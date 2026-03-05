@@ -89,13 +89,7 @@ const TimelineItem = ({ position, company, period, description, index }) => {
 				<h4 className="text-xl font-medium text-gray-300 mb-3">{company}</h4>
 				<div className="w-16 h-1 bg-primary-500/50 rounded-full mb-4"></div>
 				<p className="text-gray-300 leading-relaxed">{description}</p>
-				
-				{/* Optional: Add a "Learn more" button or link */}
-				<div className="mt-4 text-right">
-					<button className="text-primary-400 hover:text-primary-300 text-sm font-medium transition-colors">
-						Learn more →
-					</button>
-				</div>
+			
 			</motion.div>
 		</div>
 	);

@@ -7,25 +7,25 @@ import ExperienceTimeline from '@/components/ExperienceTimeline';
 export default function About() {
 	const experiences = [
 		{
-			position: 'Capstone Developer',
-			company: 'Oregon State University / OptiTrack',
-			period: 'Sep 2022 - Jun 2023',
+			position: 'Software Developer / Tester',
+			company: 'Information Systems Laboratories',
+			period: 'December 2024 - Present',
 			description:
-				'Built and tested a C++ ROS2 plugin for motion-capture data translation, validated behavior on robots, and delivered a live Python demo at the engineering expo.',
+				'I contributed on the development and testing of simulation software and web-based applications as part of a cross-functional team. I have built full-stack simulation features using Java, Go, Wails, WebSockets, and HTMX, with primary responsibility for GUI design and backend communication. I am also responsible for unit, integrated, and regression testing across multiple applications to ensure functional accuracy and system reliability. This includes developing automated, requirement based tests using test-driven development practices to improve code coverage, maintainability, and refactoring safety.  ',
 		},
 		{
-			position: 'Mobile App Developer',
-			company: 'Oregon State University',
-			period: 'Jan 2024 - Mar 2024',
+			position: 'Contract Developer Work',
+			company: 'Elysium',
+			period: 'July 2024',
 			description:
-				'Developed TimeVault, a mobile app for daily time-capsule journaling with photo capture, reminders, and Firebase-backed notifications.',
+				'Developed a command-line application in Java to embed PDF attachments into existing PDF documents using iText. Utilized Apache Maven for dependency management and build automation.',
 		},
 		{
-			position: 'Frontend Web Developer',
-			company: 'Oregon State University',
-			period: 'Jan 2024 - Mar 2024',
+			position: 'Techinical Editor',
+			company: '3D PDF Consortium',
+			period: 'May 2020 - June 2020',
 			description:
-				'Designed and implemented a peer-to-peer sports betting interface with React, consuming live-odds APIs and iterating on UX for clarity and speed.',
+				'Edited the ISO 24064 standard, ensuring technical content was correctly and consistently formatted and well documented according to International Standards Organization (ISO) guidelines. Used Adobe Acrobat Reader and Microsoft Word to review and prepare documentation for publication.',
 		}
 	];
 
@@ -55,10 +55,7 @@ export default function About() {
 						<h2 className="text-2xl font-bold text-primary-300 mb-6">My Journey</h2>
 						<div className="prose prose-lg prose-invert">
 							<p>
-								My recent work has centered on turning coursework and collaborative projects into production-style software experiences. I enjoy shipping projects end-to-end, from initial scope and architecture to iteration based on testing and feedback.
-							</p>
-							<p>
-								I am especially interested in frontend engineering, interactive experiences, and systems that connect UI decisions with measurable user value. I like working across the stack when needed, but most of my strength is in building reliable, thoughtful interfaces.
+								I am from Bend, Oregon and have graduated from Oregon State University with a degree in computer science that has a focus on computer systems. I have had experience with programming through multiple years of education, and I have worked in a variety of different groups and projects involving the discipline. My experiences in the past have given me the skills necessary to work effectively within a group and has given my communication skills that is valuable in any development setting. I am currently a Software Developer/Tester at Information Systems Laboratories.
 							</p>
 						</div>
 					</motion.div>
@@ -71,7 +68,7 @@ export default function About() {
 					>
 						<h2 className="text-2xl font-bold text-primary-300 mb-6">Skills</h2>
 						<div className="grid grid-cols-2 gap-3">
-							{['JavaScript', 'React', 'Next.js', 'Python', 'C++', 'ROS2', 'Firebase', 'Git'].map((skill) => (
+							{['Python', 'Go', 'C++', 'Java', 'JavaScript', 'Kotlin', 'React', 'SQL', 'REST API', 'AWS', 'Linux', 'Playwright', 'Git'].map((skill) => (
 								<div key={skill} className="bg-dark/50 backdrop-blur-sm p-3 rounded-lg border border-primary-700/30">
 									{skill}
 								</div>
