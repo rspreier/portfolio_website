@@ -1,42 +1,43 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
-  theme: {
-    extend: {
-      colors: {
-        gray: {
-          200: "#D5DAE1",
-        },
-        black: {
-          DEFAULT: "#000",
-          500: "#1D2235",
-        },
-        blue: {
-          500: "#2b77e7",
-        },
-        purple: {
-          100: "rgb(164,156,196, 0.7)",
-        },
-      },
-      height: {
-        '100': '28rem',
-      },
-      width: {
-        '100': '28rem',
-      },
-      fontFamily: {
-        worksans: ["Work Sans", "sans-serif"],
-        poppins: ['Poppins', "sans-serif"],
-      },
-      boxShadow: {
-        card: '0px 1px 2px 0px rgba(0, 0, 0, 0.05)',
-      },
-    },
-  },
-  plugins: [],
-};
+		content: [
+			'./src/pages/**/*.{js,jsx,ts,tsx,mdx}',
+			'./src/components/**/*.{js,jsx,ts,tsx,mdx}',
+			'./src/app/**/*.{js,jsx,ts,tsx,mdx}',
+		],
+		theme: {
+			extend: {
+				colors: {
+					primary: {
+						100: '#E9D8FD', // Light purple
+						200: '#D6BCFA',
+						300: '#B794F4',
+						400: '#9F7AEA',
+						500: '#805AD5', // Medium purple
+						600: '#6B46C1',
+						700: '#553C9A', // Dark purple
+						800: '#44337A',
+						900: '#322659',
+					},
+					dark: '#121212',
+					light: '#F9FAFB',
+				},
+			},
+		},
+		plugins: [require('daisyui')],
+		daisyui: {
+			themes: [
+				{
+					mytheme: {
+						primary: '#805AD5',
+						secondary: '#553C9A',
+						accent: '#9F7AEA',
+						neutral: '#191D24',
+						'base-100': '#F9FAFB',
+						'base-200': '#E5E7EB',
+						'base-300': '#D1D5DB',
+					},
+				},
+			],
+		},
+	}
