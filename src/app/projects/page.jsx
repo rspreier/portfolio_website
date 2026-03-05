@@ -78,8 +78,8 @@ export default function Projects() {
 					</p>
 				</motion.div>
 
-				{/* Filter buttons */}
-				<div className="flex justify-center mb-12">
+				{/* Filter buttons NOT WORKING FOR NOW, FIX LATER*/}
+				{/* <div className="flex justify-center mb-12">
 					<div className="join">
 						<button
 							className={`btn join-item ${filter === 'all' ? 'bg-primary-600 text-white' : 'bg-dark text-gray-300'}`}
@@ -100,7 +100,7 @@ export default function Projects() {
 							Apps
 						</button>
 					</div>
-				</div>
+				</div> */}
 			</div>
 
 			<div ref={containerRef} className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-12">
