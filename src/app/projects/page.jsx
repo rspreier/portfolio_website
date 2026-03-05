@@ -29,7 +29,7 @@ const projects = [
 										"Lastly, there is also an option to schedule reminders through notifications to enhance the user experience by prompting revisits " +
 										"to specific capsules on desired dates. This app uses Google's Firebase API to assist with sending notifications. This was a short term " +
 										"project for my Mobile Sofware Development class at Oregon State University and was feature on Professor Hess' Hall of Fame.",
-		technologies: ['C++', 'Python', 'ROS2', 'Linux', 'Git'],
+		technologies: ['Kotlin', 'Firebase', 'Android Studio', 'XML', 'SQLite', 'API Integration'],
 		image: '/img/timevault.gif',
 		alt: 'TimeVault mobile app interface with calendar and time-capsule entries'
 	},
@@ -42,7 +42,7 @@ const projects = [
 										"the Odds API fuel the betting system, offering various lines from multiple betting services. To ensure a seamless user experience, I employed " +
 										"the React.js framework to construct the frontend of the application. This was a short term project worked on with two other student in the early" +
 										"stage of development. More work is to be done on the application with improvements to the interface and adding a backend to the app.",
-		technologies: ['C++', 'Python', 'ROS2', 'Linux', 'Git'],
+		technologies: ['React', 'JavaScript', 'HTML/CSS', 'API Integration'],
 		image: '/img/bet.png',
 		alt: 'Sports betting web application interface with peer-to-peer features'
 	},    
