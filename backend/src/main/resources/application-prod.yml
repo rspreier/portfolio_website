@@ -1,0 +1,12 @@
+app:
+  contact:
+    rate-limit:
+      requests-per-minute: ${CONTACT_RATE_LIMIT_PER_MINUTE:2}
+    mail:
+      enabled: ${CONTACT_MAIL_ENABLED:true}
+      require-delivery: ${CONTACT_REQUIRE_EMAIL_DELIVERY:true}
+
+management:
+  endpoint:
+    health:
+      show-details: never

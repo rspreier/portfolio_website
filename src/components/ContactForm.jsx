@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
+import { apiUrl } from '@/lib/api';
 
 export default function ContactForm() {
 	const [formData, setFormData] = useState({
@@ -27,7 +28,7 @@ export default function ContactForm() {
 		setIsSubmitting(true);
 		
 		try {
-			const response = await fetch('/api', {
+			const response = await fetch(apiUrl('/api/contact'), {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -35,15 +36,15 @@ export default function ContactForm() {
 				body: JSON.stringify(formData),
 			});
 			
-			const data = await response.json();
+			const data = await response.json().catch(() => ({}));
 			
 			if (!response.ok) {
-				throw new Error(data.error || 'Failed to send message');
+				throw new Error(data.message || data.error || 'Failed to send message');
 			}
 			
 			setSubmitStatus({
 				success: true,
-				message: 'Your message has been sent successfully!'
+				message: data.message || 'Your message has been sent successfully!'
 			});
 			
 			// Reset form

@@ -1,33 +1,34 @@
 // src/app/about/page.jsx
 'use client';
 
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import ExperienceTimeline from '@/components/ExperienceTimeline';
+import { apiUrl } from '@/lib/api';
 
 export default function About() {
-	const experiences = [
-		{
-			position: 'Software Developer / Tester',
-			company: 'Information Systems Laboratories',
-			period: 'December 2024 - Present',
-			description:
-				'I contributed on the development and testing of simulation software and web-based applications as part of a cross-functional team. I have built full-stack simulation features using Java, Go, Wails, WebSockets, and HTMX, with primary responsibility for GUI design and backend communication. I am also responsible for unit, integrated, and regression testing across multiple applications to ensure functional accuracy and system reliability. This includes developing automated, requirement based tests using test-driven development practices to improve code coverage, maintainability, and refactoring safety.  ',
-		},
-		{
-			position: 'Contract Developer Work',
-			company: 'Elysium',
-			period: 'July 2024',
-			description:
-				'Developed a command-line application in Java to embed PDF attachments into existing PDF documents using iText. Utilized Apache Maven for dependency management and build automation.',
-		},
-		{
-			position: 'Techinical Editor',
-			company: '3D PDF Consortium',
-			period: 'May 2020 - June 2020',
-			description:
-				'Edited the ISO 24064 standard, ensuring technical content was correctly and consistently formatted and well documented according to International Standards Organization (ISO) guidelines. Used Adobe Acrobat Reader and Microsoft Word to review and prepare documentation for publication.',
-		}
-	];
+	const [experiences, setExperiences] = useState([]);
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState('');
+
+	useEffect(() => {
+		const fetchExperiences = async () => {
+			try {
+				const response = await fetch(apiUrl('/api/experiences'));
+				if (!response.ok) {
+					throw new Error('Failed to load experiences.');
+				}
+				const data = await response.json();
+				setExperiences(data);
+			} catch (err) {
+				setError(err.message || 'Failed to load experiences.');
+			} finally {
+				setIsLoading(false);
+			}
+		};
+
+		fetchExperiences();
+	}, []);
 
 	return (
 		<div className="min-h-screen bg-dark text-light pt-24 pb-16">
@@ -85,6 +86,11 @@ export default function About() {
 					className="max-w-6xl mx-auto"
 				>
 					<h2 className="text-2xl font-bold text-primary-300  text-center">Experience</h2>
+					{isLoading && <p className="text-gray-300 text-center mt-4">Loading experience...</p>}
+					{error && !isLoading && <p className="text-red-300 text-center mt-4">{error}</p>}
+					{!isLoading && !error && experiences.length === 0 && (
+						<p className="text-gray-300 text-center mt-4">No experience entries yet.</p>
+					)}
 					<ExperienceTimeline experiences={experiences} />
 				</motion.div>
 			</div>

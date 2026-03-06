@@ -6,7 +6,10 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"check:frontend": "npm run lint && npm run build",
+		"check:backend": "cd backend && mvn -DskipTests compile",
+		"check:all": "npm run check:backend && npm run check:frontend"
 	},
 	"dependencies": {
 		"@splinetool/react-spline": "^4.0.0",
