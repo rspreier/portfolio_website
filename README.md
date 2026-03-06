@@ -139,7 +139,7 @@ Manual full-stack smoke checklist:
 
 - Frontend is ready to consume a separate backend API (`NEXT_PUBLIC_API_BASE_URL`).
 - Backend seeds initial `projects` and `experiences` through Flyway migration.
-- The site uses animated interactions and transitions heavily, so performance-sensitive assets (especially GIFs) should be optimized when possible.
+- The site uses animated interactions and transitions heavily, so performance-sensitive assets should be optimized when possible.
 
 ## Deployment Runbook
 
