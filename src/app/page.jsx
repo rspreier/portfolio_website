@@ -8,7 +8,7 @@ export default function Home() {
 	const [isLoading, setIsLoading] = useState(true);
 
 	useEffect(() => {
-		// Simulate loading time for Spline scene
+		// Simulate loading time for 3D scene
 		const timer = setTimeout(() => {
 			setIsLoading(false);
 		}, 2000);

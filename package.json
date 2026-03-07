@@ -12,6 +12,8 @@
 		"check:all": "npm run check:backend && npm run check:frontend"
 	},
 	"dependencies": {
+		"@react-three/drei": "^10.7.6",
+		"@react-three/fiber": "^9.4.0",
 		"@splinetool/react-spline": "^4.0.0",
 		"daisyui": "^5.0.0",
 		"framer-motion": "^12.4.7",
