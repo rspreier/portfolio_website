@@ -2,6 +2,11 @@
 
 Use this checklist after backend/frontend changes.
 
+Production target stack:
+- Frontend: Vercel
+- Backend: AWS App Runner
+- Database: Supabase Postgres
+
 ## 1. Start Services
 
 1. Start Postgres:
@@ -23,6 +28,10 @@ mvn spring-boot:run
 ```bash
 npm run dev
 ```
+
+Note:
+- Local DB testing uses `backend/docker-compose.yml`.
+- Production uses Supabase, not the local Postgres container.
 
 ## 2. API Health
 
@@ -64,3 +73,14 @@ Expected:
 - Backend compile passes.
 - Frontend lint passes.
 - Frontend production build passes.
+
+## 7. Production Smoke
+
+1. Open frontend production URL (Vercel).
+2. Verify `/about` and `/projects` load backend-backed data.
+3. Submit `/contact` form and verify email delivery.
+4. Check backend health endpoints:
+- `https://<app-runner-url>/api/health`
+- `https://<app-runner-url>/actuator/health`
+5. Confirm frontend is pointing to backend API:
+- `NEXT_PUBLIC_API_BASE_URL=https://<app-runner-url>`

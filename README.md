@@ -5,6 +5,11 @@ Portfolio project with:
 - Spring Boot REST API backend (`/backend`)
 - PostgreSQL database (via Docker)
 
+Production stack:
+- Frontend: Vercel
+- Backend: AWS App Runner
+- Database: Supabase Postgres
+
 ## Tech Stack
 
 ### Frontend
@@ -140,8 +145,3 @@ Manual full-stack smoke checklist:
 - Frontend is ready to consume a separate backend API (`NEXT_PUBLIC_API_BASE_URL`).
 - Backend seeds initial `projects` and `experiences` through Flyway migration.
 - The site uses animated interactions and transitions heavily, so performance-sensitive assets should be optimized when possible.
-
-## Deployment Runbook
-
-- [PRODUCTION_SETUP.md](C:/Users/rspre/dev/updated_website/rspreier_web/docs/PRODUCTION_SETUP.md)
-
