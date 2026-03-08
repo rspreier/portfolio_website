@@ -74,28 +74,63 @@ function ComputerScene({ onNavigate, lines, input, setInput, handleKeyDown }) {
 	return (
 		<>
 			<color attach="background" args={['#06060a']} />
-			<ambientLight intensity={0.7} />
-			<directionalLight position={[4, 5, 3]} intensity={1.15} />
-			<pointLight position={[-3.2, 2.8, 2]} intensity={0.5} color="#9f7aea" />
+			<ambientLight intensity={0.82} />
+			<directionalLight position={[4, 5, 3]} intensity={1.2} />
+			<pointLight position={[-3.2, 2.8, 2]} intensity={0.58} color="#9f7aea" />
+			<pointLight position={[2.8, 2.4, 2.2]} intensity={0.42} color="#f4f1ff" />
 
 			<group ref={rigRef}>
-				<mesh position={[0, -1.35, 0]} receiveShadow onClick={() => onNavigate('/')}>
-					<boxGeometry args={[5.2, 0.2, 2.6]} />
-					<meshStandardMaterial color="#151725" />
+				{/* Desk top + lower trim */}
+				<mesh position={[0, -1.28, 0]} receiveShadow onClick={() => onNavigate('/')}>
+					<boxGeometry args={[5.9, 0.16, 3.2]} />
+					<meshStandardMaterial color="#664532" roughness={0.92} metalness={0.04} />
+				</mesh>
+				<mesh position={[0, -1.38, 0]}>
+					<boxGeometry args={[5.94, 0.06, 3.24]} />
+					<meshStandardMaterial color="#553725" roughness={0.88} />
+				</mesh>
+				<mesh position={[0, -1.41, 1.57]}>
+					<boxGeometry args={[5.94, 0.02, 0.06]} />
+					<meshStandardMaterial color="#8a634d" roughness={0.78} />
+				</mesh>
+				<mesh position={[-2.84, -1.73, 0]}>
+					<boxGeometry args={[0.08, 0.56, 3.14]} />
+					<meshStandardMaterial color="#4a3021" roughness={0.9} />
+				</mesh>
+				<mesh position={[2.84, -1.73, 0]}>
+					<boxGeometry args={[0.08, 0.56, 3.14]} />
+					<meshStandardMaterial color="#4a3021" roughness={0.9} />
 				</mesh>
 
-				<mesh position={[0, -0.62, 0]} onClick={() => onNavigate('/')}>
-					<boxGeometry args={[0.28, 1.2, 0.28]} />
-					<meshStandardMaterial color="#232738" />
+				{/* Monitor stand + base */}
+				<mesh position={[0, -0.56, -0.03]} onClick={() => onNavigate('/')}>
+					<boxGeometry args={[0.21, 1.15, 0.19]} />
+					<meshStandardMaterial color="#edf1f7" metalness={0.12} roughness={0.25} />
+				</mesh>
+				<mesh position={[0, -1.05, 0.09]} onClick={() => onNavigate('/')}>
+					<cylinderGeometry args={[0.58, 0.7, 0.07, 42]} />
+					<meshStandardMaterial color="#f5f7fb" metalness={0.1} roughness={0.32} />
+				</mesh>
+				<mesh position={[0, -1.01, 0.18]} onClick={() => onNavigate('/')}>
+					<cylinderGeometry args={[0.38, 0.45, 0.06, 42]} />
+					<meshStandardMaterial color="#e7ebf2" metalness={0.1} roughness={0.4} />
 				</mesh>
 
-				<mesh position={[0, 0.35, 0]} onClick={() => onNavigate('/projects')}>
-					<boxGeometry args={[3.3, 2.1, 0.2]} />
-					<meshStandardMaterial color="#2d2f44" metalness={0.25} roughness={0.55} />
+				{/* Monitor body */}
+				<mesh position={[0, 0.34, -0.03]} onClick={() => onNavigate('/projects')}>
+					<boxGeometry args={[3.5, 2.22, 0.26]} />
+					<meshStandardMaterial color="#f8f9fc" metalness={0.08} roughness={0.28} />
 				</mesh>
-
-				<mesh position={[0, 0.35, 0.11]} onClick={() => onNavigate('/projects')}>
-					<planeGeometry args={[2.95, 1.7]} />
+				<mesh position={[0, 0.34, -0.12]} onClick={() => onNavigate('/projects')}>
+					<boxGeometry args={[3.2, 1.95, 0.12]} />
+					<meshStandardMaterial color="#e9edf4" metalness={0.08} roughness={0.35} />
+				</mesh>
+				<mesh position={[0, 0.33, 0.102]}>
+					<planeGeometry args={[3.12, 1.86]} />
+					<meshStandardMaterial color="#dbe1eb" roughness={0.4} metalness={0.05} />
+				</mesh>
+				<mesh position={[0, 0.33, 0.108]} onClick={() => onNavigate('/projects')}>
+					<planeGeometry args={[2.92, 1.66]} />
 					<meshStandardMaterial
 						ref={screenMatRef}
 						color="#0b1018"
@@ -105,11 +140,52 @@ function ComputerScene({ onNavigate, lines, input, setInput, handleKeyDown }) {
 						roughness={0.75}
 					/>
 				</mesh>
-
-				<mesh position={[0, -1.1, 0.78]} rotation={[-0.2, 0, 0]} onClick={() => onNavigate('/contact')}>
-					<boxGeometry args={[2.35, 0.12, 0.9]} />
-					<meshStandardMaterial color="#1d2032" />
+				<mesh position={[0, -0.58, 0.1]}>
+					<sphereGeometry args={[0.02, 18, 18]} />
+					<meshStandardMaterial color="#7c3aed" emissive="#7c3aed" emissiveIntensity={0.45} />
 				</mesh>
+
+				{/* Keyboard (slim low-profile) */}
+				<group position={[0.05, -1.13, 1.12]} rotation={[-0.14, 0, 0]} onClick={() => onNavigate('/contact')}>
+					<mesh>
+						<boxGeometry args={[2.52, 0.06, 0.86]} />
+						<meshStandardMaterial color="#f5f7fb" roughness={0.3} metalness={0.08} />
+					</mesh>
+					<mesh position={[0, 0.019, 0.02]}>
+						<boxGeometry args={[2.36, 0.02, 0.72]} />
+						<meshStandardMaterial color="#e8edf5" roughness={0.45} />
+					</mesh>
+					{[-0.22, -0.1, 0.02, 0.14, 0.26].map((z, rowIdx) => (
+						<mesh key={`keyline-${rowIdx}`} position={[0, 0.031, z]}>
+							<boxGeometry args={[2.22, 0.008, 0.075]} />
+							<meshStandardMaterial color="#d8deea" roughness={0.65} />
+						</mesh>
+					))}
+					<mesh position={[0, 0.032, 0.29]}>
+						<boxGeometry args={[1.25, 0.009, 0.08]} />
+						<meshStandardMaterial color="#d2d9e6" roughness={0.62} />
+					</mesh>
+				</group>
+
+				{/* Mouse pad + low-profile mouse */}
+				<mesh position={[2.02, -1.16, 0.9]} rotation={[-0.18, -0.1, 0]}>
+					<cylinderGeometry args={[0.42, 0.42, 0.012, 30]} />
+					<meshStandardMaterial color="#202636" roughness={0.92} />
+				</mesh>
+				<group position={[2.02, -1.08, 0.9]} rotation={[-0.18, -0.1, 0]}>
+					<mesh scale={[1.05, 0.58, 1.35]}>
+						<sphereGeometry args={[0.18, 26, 20]} />
+						<meshStandardMaterial color="#f7f9fd" roughness={0.3} metalness={0.08} />
+					</mesh>
+					<mesh position={[0, 0.062, 0]} scale={[0.82, 0.4, 1.02]}>
+						<sphereGeometry args={[0.16, 22, 20]} />
+						<meshStandardMaterial color="#eef2f8" roughness={0.35} metalness={0.05} />
+					</mesh>
+					<mesh position={[0, 0.072, 0.005]}>
+						<boxGeometry args={[0.022, 0.05, 0.12]} />
+						<meshStandardMaterial color="#cfd6e3" roughness={0.58} />
+					</mesh>
+				</group>
 
 				<mesh position={[-1.18, 1.1, 0.18]} onClick={() => onNavigate('/about')}>
 					<boxGeometry args={[0.55, 0.14, 0.12]} />
@@ -127,9 +203,9 @@ function ComputerScene({ onNavigate, lines, input, setInput, handleKeyDown }) {
 				<Html
 					transform
 					occlude
-					position={[0, 0.35, 0.115]}
+					position={[0, 0.35, 0.125]}
 					rotation={[0, 0, 0]}
-					distanceFactor={1.68}
+					distanceFactor={1.72}
 					style={{ pointerEvents: 'auto' }}
 				>
 					<TerminalPanel lines={lines} input={input} setInput={setInput} handleKeyDown={handleKeyDown} />

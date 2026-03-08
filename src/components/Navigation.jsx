@@ -9,7 +9,6 @@ import { motion } from 'framer-motion';
 export default function Navigation() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const pathname = usePathname();
-	const isHomePage = pathname === '/';
 	
 	useEffect(() => {
 		const handleScroll = () => {
@@ -20,15 +19,9 @@ export default function Navigation() {
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	// Determine text color based on page and scroll state
+	// Keep navbar link colors consistent across all pages.
 	const getLinkTextColor = (isActive) => {
-		if (isHomePage && !isScrolled) {
-			// On home page and not scrolled: black text
-			return isActive ? 'text-black font-medium' : 'text-black hover:text-primary-700';
-		} else {
-			// On other pages or when scrolled: light text
-			return isActive ? 'text-primary-400 font-medium' : 'text-light hover:text-primary-300';
-		}
+		return isActive ? 'text-primary-400 font-medium' : 'text-light hover:text-primary-300';
 	};
 
 	return (
@@ -69,7 +62,7 @@ export default function Navigation() {
 							))}
 						</ul>
 						<div className="dropdown dropdown-end md:hidden">
-							<label tabIndex={0} className={`btn btn-ghost ${isHomePage && !isScrolled ? 'text-black' : 'text-light'}`}>
+							<label tabIndex={0} className="btn btn-ghost text-light">
 								<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
 									<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
 								</svg>
