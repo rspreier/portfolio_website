@@ -2,6 +2,7 @@ import '../styles/global.css';
 import { Inter } from 'next/font/google';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { ThemeProvider } from '@/components/ThemeProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,11 +13,13 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
 	return (
-		<html lang="en" data-theme="mytheme">
+		<html lang="en" data-theme="mytheme" data-site-theme="light">
 			<body className={inter.className}>
-				<Navigation />
-				{children}
-				<Footer />
+				<ThemeProvider>
+					<Navigation />
+					{children}
+					<Footer />
+				</ThemeProvider>
 			</body>
 		</html>
 	);
