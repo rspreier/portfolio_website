@@ -6,7 +6,10 @@ import Spline from '@splinetool/react-spline';
 // Object names in the scene that should trigger the terminal
 const CLICK_TARGETS = ['Text', 'screen', 'body', 'computer', 'Screen code'];
 
-export default function SplineRoom({ onComputerClick, onSceneLoad }) {
+// Object names that should toggle the theme
+const THEME_TARGETS = ['Ellipse 3'];
+
+export default function SplineRoom({ onComputerClick, onSceneLoad, onThemeToggle }) {
   const containerRef = useRef(null);
 
   // Intercept wheel events in capture phase so they never reach Spline's canvas,
@@ -29,13 +32,16 @@ export default function SplineRoom({ onComputerClick, onSceneLoad }) {
     onSceneLoad?.();
   }
 
-  function handleMouseDown(e) {
+  function handleEvent(e) {
     const name = e?.target?.name ?? '';
-    // Log in dev to help identify object names
-    if (process.env.NODE_ENV === 'development') {
-      console.log('[SplineRoom] clicked:', name);
-    }
+    console.log('[SplineRoom] event:', e.type, '| object:', name);
     const lower = name.toLowerCase();
+
+    if (THEME_TARGETS.includes(name) || lower.includes('button')) {
+      onThemeToggle?.();
+      return;
+    }
+
     if (
       CLICK_TARGETS.includes(name) ||
       lower.includes('screen') ||
@@ -52,7 +58,8 @@ export default function SplineRoom({ onComputerClick, onSceneLoad }) {
     <div ref={containerRef} style={{ width: '100%', height: '100%' }}>
       <Spline
         scene="https://prod.spline.design/O8AEuAkG6KGKp0p4/scene.splinecode"
-        onSplineMouseDown={handleMouseDown}
+        onSplineMouseDown={handleEvent}
+        onSplineMouseUp={handleEvent}
         onLoad={handleLoad}
         style={{ width: '100%', height: '100%' }}
       />

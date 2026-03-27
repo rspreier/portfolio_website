@@ -5,6 +5,7 @@ import { createContext, useContext, useEffect, useMemo, useState } from 'react';
 const ThemeContext = createContext({
 	theme: 'light',
 	setTheme: () => {},
+	toggleTheme: () => {},
 	availableThemes: ['light', 'dark', 'retro'],
 });
 
@@ -31,10 +32,15 @@ export function ThemeProvider({ children }) {
 		setThemeState(nextTheme);
 	}
 
+	function toggleTheme() {
+		setThemeState(prev => prev === 'dark' ? 'light' : 'dark');
+	}
+
 	const value = useMemo(
 		() => ({
 			theme,
 			setTheme,
+			toggleTheme,
 			availableThemes: VALID_THEMES,
 		}),
 		[theme]

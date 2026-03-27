@@ -9,17 +9,15 @@ import { motion } from 'framer-motion';
 export default function Navigation() {
 	const [isScrolled, setIsScrolled] = useState(false);
 	const pathname = usePathname();
-	
+
 	useEffect(() => {
 		const handleScroll = () => {
 			setIsScrolled(window.scrollY > 10);
 		};
-		
 		window.addEventListener('scroll', handleScroll);
 		return () => window.removeEventListener('scroll', handleScroll);
 	}, []);
 
-	// Keep navbar link colors consistent across all pages.
 	const getLinkTextColor = (isActive) => {
 		return isActive ? 'text-primary-400 font-medium' : 'text-light hover:text-primary-300';
 	};
@@ -37,9 +35,9 @@ export default function Navigation() {
 				<div className="navbar">
 					<div className="navbar-start">
 						<Link href="/" className="relative w-16 h-16 rounded-lg bg-white">
-							<Image 
-								src="/img/logo.png" 
-								alt="Site logo" 
+							<Image
+								src="/img/logo.png"
+								alt="Site logo"
 								fill
 								priority
 								sizes="64px"
@@ -52,7 +50,7 @@ export default function Navigation() {
 						<ul className="menu menu-horizontal px-1 hidden md:flex">
 							{['About', 'Projects', 'Contact'].map((item) => (
 								<li key={item}>
-									<Link 
+									<Link
 										href={`/${item.toLowerCase()}`}
 										className={`text-lg ${getLinkTextColor(pathname === `/${item.toLowerCase()}`)}`}
 									>
@@ -70,7 +68,7 @@ export default function Navigation() {
 							<ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-dark rounded-box w-52">
 								{['About', 'Projects', 'Contact'].map((item) => (
 									<li key={item}>
-										<Link 
+										<Link
 											href={`/${item.toLowerCase()}`}
 											className={pathname === `/${item.toLowerCase()}` ? 'text-primary-400' : ''}
 										>

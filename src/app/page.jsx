@@ -4,11 +4,13 @@ import { useState, useCallback, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { motion, AnimatePresence } from 'framer-motion';
 import GlitchHero from '@/components/GlitchHero';
+import { useSiteTheme } from '@/components/ThemeProvider';
 
 // Spline requires browser APIs — skip SSR
 const SplineRoom = dynamic(() => import('@/components/SplineRoom'), { ssr: false });
 
 export default function Home() {
+	const { toggleTheme } = useSiteTheme();
 	const [showTerminal, setShowTerminal] = useState(false);
 	const [flashing, setFlashing] = useState(false);
 	const [sceneLoaded, setSceneLoaded] = useState(false);
@@ -41,9 +43,9 @@ export default function Home() {
 			{/* 3D scene — always mounted for fast restore */}
 			<div
 				className="absolute inset-0"
-				style={{ visibility: showTerminal ? 'hidden' : 'visible', background: '#f0ede8' }}
+				style={{ visibility: showTerminal ? 'hidden' : 'visible', background: 'var(--site-bg, #f5f5f7)', transition: 'background 0.3s ease' }}
 			>
-				<SplineRoom onComputerClick={handleComputerClick} onSceneLoad={handleSceneLoad} />
+				<SplineRoom onComputerClick={handleComputerClick} onSceneLoad={handleSceneLoad} onThemeToggle={toggleTheme} />
 			</div>
 
 			{/* Loading spinner */}
@@ -52,7 +54,7 @@ export default function Home() {
 					<motion.div
 						key="loader"
 						className="pointer-events-none absolute inset-0 z-20 flex flex-col items-center justify-center gap-4"
-						style={{ background: '#f0ede8' }}
+						style={{ background: 'var(--site-bg, #f5f5f7)' }}
 						initial={{ opacity: 1 }}
 						exit={{ opacity: 0 }}
 						transition={{ duration: 0.6 }}
